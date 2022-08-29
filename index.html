@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora JavaScript</title>
     <link rel="stylesheet" href="./style.css">
+    
 </head>
 <body>
     <div class="calculadora">
         <div class="botoes">
-            <h2 id="valor">123</h2>
+            <h2 id="valor"></h2>
             <span id="clear">Clear</span>
             <span id="divisao">/</span>
-            <span id="soma">+</span>
-            <span id="subtracao">-</span>
             <span id="multiplicacao">*</span>
+            <span id="subtracao">-</span>
             <span>0</span>
             <span>1</span>
             <span>2</span>
@@ -26,10 +26,37 @@
             <span>7</span>
             <span >8</span>
             <span id="nove">9</span>
+            <span id="soma">+</span>
             <span id="ponto">.</span>
             <span id="igual">=</span>
         </div>
     </div>
+
+    <script>
+        let botoes = document.querySelector('.botoes');
+        let btn = document.querySelectorAll('span');
+        let valor = document.getElementById('valor');
+
+        for(let i=0; i<btn.length; i++){
+            // loop para ler e verificar a acao a ser tomada apos o click de cada botao
+            btn[i].addEventListener("click",function(){
+
+                if(this.innerHTML=="="){
+                    // realiza a operacao lida pelo queryselector
+                    valor.innerHTML= eval(valor.innerHTML);
+                }else{
+                    if(this.innerHTML=="Clear"){
+                        // acao ao clicar no botao clear
+                        valor.innerHTML = "0";
+                    }
+                    else{
+                        // adiciona os elementos à operacao
+                        valor.innerHTML += this.innerHTML;
+                    }
+                }
+            })
+        }
+    </script>
     
 </body>
 </html>
